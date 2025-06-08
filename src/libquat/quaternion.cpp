@@ -74,6 +74,9 @@ quaternion &quaternion::identity()
 quaternion &quaternion::normalize()
 {
 	// todo: 実装して下さい
+	float norm = std::sqrt(this->length_sq());
+	*this = *this / norm;
+
 	return *this;
 }
 
