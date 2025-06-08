@@ -116,6 +116,10 @@ quaternion quaternion::slerp(const quaternion& q0, const quaternion& q1, float t
 	// todo: 実装して下さい
 	float dot = q0.w_ * q1.w_ + q0.x_ * q1.x_ + q0.y_ * q1.y_ + q0.z_ * q1.z_;
 	float theta = acos(dot);
+
+	if (theta <= 0.1f)
+		return q0;
+
 	float sinTheta = sin(theta);
 	
 	quaternion returnQua = q0 * (sin((1 - t) * theta) / sinTheta) + q1 * (sin(t * theta) / sinTheta);
